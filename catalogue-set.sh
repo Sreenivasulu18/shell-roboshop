@@ -53,7 +53,7 @@ systemctl enable catalogue &>>$LOG_FILE
 systemctl start catalogue
 cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 
-dnf install mongodb-mongoshfdg -y  &>>$LOG_FILE
+dnf install mongodb-mongoshfdgfhfh -y  &>>$LOG_FILE
 
 INDEX=$(mongosh mongodb.daws96s.fun --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')")
 if [ $INDEX -le 0 ]; then
