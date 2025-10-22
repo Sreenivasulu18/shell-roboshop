@@ -5,7 +5,7 @@ Description=Payment Service
 User=root
 WorkingDirectory=/app
 // highlight-start
-Environment=cart.daws96s.fun
+Environment=CART_HOST=cart.daws96s.fun
 Environment=CART_PORT=8080
 Environment=USER_HOST=user.daws96s.fun
 Environment=USER_PORT=8080
