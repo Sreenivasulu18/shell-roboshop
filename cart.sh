@@ -40,7 +40,7 @@ VALIDATE $? "Installing NodeJS"
 
 id roboshop  &>>$LOG_FILE
 if [ $? -ne 0 ]; then
-    cartadd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOG_FILE
+    cuseradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOG_FILE
     VALIDATE $? "Creating system user"
 else 
     echo -e "cart already exist ... $Y SKIPPING $N"
