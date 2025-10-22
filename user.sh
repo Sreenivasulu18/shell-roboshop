@@ -45,6 +45,7 @@ if [ $? -ne 0 ]; then
 else 
     echo -e "User already exist ... $Y SKIPPING $N"
 fi
+
 mkdir -p /app 
 VALIDATE $? "Creating app directory"
 
@@ -52,13 +53,13 @@ curl -L -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
 VALIDATE $? "Downloadng user application"
 
 cd /app
-VALIDATE $? "Changing to app directory"
+VALIDATE $? "Changing to app directory" 
 
 rm -rf /app/* 
 VALIDATE $? "Removing Existing code"
 
 unzip /tmp/user.zip &>>$LOG_FILE
-VALIDATE $? "unzip catalogue"
+VALIDATE $? "unzip shipping"
 
 npm install  &>>$LOG_FILE
 VALIDATE $? "Installing Dependencies"
@@ -72,3 +73,4 @@ VALIDATE $? "Enable user"
 
 systemctl restart user
 VALIDATE $? "Restarted user"
+
