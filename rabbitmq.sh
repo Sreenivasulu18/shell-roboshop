@@ -8,13 +8,13 @@ Y="\e[33m"
 N="\e[0m"
 LOGS_FOLDER="/var/log/shell-roboshop"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
-SCRIPT_DIR=$PWD
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 START_TIME=$(date +%s)
-
-
 mkdir -p $LOGS_FOLDER
+SCRIPT_DIR=$PWD
 echo "Script started executed at: $(date)"  | tee -a $LOG_FILE
+
+
 if [ $USERID -ne 0 ]; then
     echo "ERROR:: Please run this script with root previlage"
     exit 1 # failure is other than 0
@@ -29,7 +29,7 @@ VALIDATE(){  # functions receive inputs through args just like shell script args
     fi
 }
 
-cp $SCRIPT_DIR/rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo
+cp $SCRIPT_DIR/rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo &>>$LOG_FILE
 VALIDATE $? "Adding RabbitMQ repo"
 
 dnf install rabbitmq-server -y &>>$LOG_FILE
