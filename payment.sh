@@ -41,13 +41,13 @@ else
 fi
 
 mkdir -p /app
-VALIDATE $? "Creating app directory" 
+VALIDATE $? "Creating app directory"
 
-curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip &>>$LOG_FILE
+curl -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip &>>$LOG_FILE
 VALIDATE $? "Downloading payment application"
 
 cd /app 
-VALIDATE $? "Changing app directory"
+VALIDATE $? "Changing to app directory"
 
 rm -rf /app/*
 VALIDATE $? "Removing existing code"
@@ -59,6 +59,6 @@ pip3 install -r requirements.txt &>>$LOG_FILE
 
 cp $SCRIPT_DIR/payment.service /etc/systemd/system/payment.service
 systemctl daemon-reload
-systemctl enable payment &>>$LOG_FILE
+systemctl enable payment  &>>$LOG_FILE
 
 systemctl restart payment
